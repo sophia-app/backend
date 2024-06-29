@@ -1,7 +1,7 @@
 .PHONY: default run build test docs clean
 
 # Variables
-APP_NAME=storify
+APP_NAME=sophia
 
 # Tasks
 default: run-with-docs

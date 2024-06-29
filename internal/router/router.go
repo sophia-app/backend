@@ -2,11 +2,11 @@ package router
 
 import "github.com/gin-gonic/gin"
 
-// Initialize initializes the router
+// Initialize initializes the router.
 func Initialize() {
-	r := gin.Default()
+	router := gin.Default()
 
-	initializeRoutes(r)
+	initializeRoutes(router)
 
-	r.Run(":8080")
+	router.Run(":8080")
 }

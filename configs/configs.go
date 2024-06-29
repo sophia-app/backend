@@ -9,18 +9,18 @@ var (
 	db     *gorm.DB
 )
 
-// GetLogger returns a logger instance
+// GetLogger returns a logger instance.
 func GetLogger(p string) *Logger {
 	logger = NewLogger(p)
 	return logger
 }
 
-// GetDatabase returns a database instance
+// GetDatabase returns a database instance.
 func GetDatabase() *gorm.DB {
 	return db
 }
 
-// InitializeDatabase initializes the database
+// InitializeDatabase initializes the database.
 func InitializeDatabase() error {
 	var err error
 
