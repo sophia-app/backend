@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/sophia-app/backend/internal/schemas"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-// InitializePostgres initializes a connection to a PostgreSQL database
+// InitializePostgres initializes a connection to a PostgreSQL database.
 func InitializePostgres() (*gorm.DB, error) {
 	logger := GetLogger("postgres")
 
@@ -27,12 +28,11 @@ func InitializePostgres() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	// Migrate schemas
-	// err = db.AutoMigrate(&schemas.Company{})
-	// if err != nil {
-	// 	logger.Errorf("Failed to migrate schema: %v", err)
-	// 	return nil, err
-	// }
+	err = db.AutoMigrate(&schemas.User{})
+	if err != nil {
+		logger.Errorf("failed to migrate schemas: %v", err)
+		return nil, err
+	}
 
 	return db, nil
 }
