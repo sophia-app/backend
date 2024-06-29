@@ -9,7 +9,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// initializeRoutes initializes the routes
+// initializeRoutes initializes the routes.
 func initializeRoutes(router *gin.Engine) {
 	handler.InitializeHandler()
 
@@ -18,7 +18,7 @@ func initializeRoutes(router *gin.Engine) {
 
 	v1 := router.Group(basePath)
 	{
-
+		v1.POST("/login", handler.Login)
 	}
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
