@@ -1,7 +1,6 @@
-package handler
+package common
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -12,19 +11,19 @@ type ErrorResponse struct {
 	Message string `json:"message"`
 }
 
-// sendError sends an error response.
-func sendError(ctx *gin.Context, code int, msg string) {
+// SendError sends an error response.
+func SendError(ctx *gin.Context, code int, msg string) {
 	ctx.Header("Content-Type", "application/json")
 	ctx.JSON(code, gin.H{
 		"message": msg,
 	})
 }
 
-// sendSuccess sends a success response.
-func sendSuccess(ctx *gin.Context, operation string, data interface{}) {
+// SendSuccess sends a success response.
+func SendSuccess(ctx *gin.Context, message string, data interface{}) {
 	ctx.Header("Content-Type", "application/json")
 	ctx.JSON(http.StatusOK, gin.H{
-		"message": fmt.Sprintf("%s successfully", operation),
+		"message": message,
 		"data":    data,
 	})
 }

@@ -2,7 +2,8 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/sophia-app/backend/internal/handler"
+	"github.com/sophia-app/backend/internal/handlers"
+	"github.com/sophia-app/backend/internal/handlers/auth"
 
 	docs "github.com/sophia-app/backend/docs"
 	swaggerfiles "github.com/swaggo/files"
@@ -11,14 +12,15 @@ import (
 
 // initializeRoutes initializes the routes.
 func initializeRoutes(router *gin.Engine) {
-	handler.InitializeHandler()
+	handlers.InitializeHandlers()
 
 	basePath := "/api/v1"
 	docs.SwaggerInfo.BasePath = basePath
 
 	v1 := router.Group(basePath)
 	{
-		v1.POST("/login", handler.Login)
+		v1.POST("/login", auth.Login)
+		v1.POST("/register", auth.Register)
 	}
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))

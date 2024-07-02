@@ -1,4 +1,4 @@
-package handler
+package auth
 
 import (
 	"github.com/sophia-app/backend/configs"
@@ -10,8 +10,7 @@ var (
 	db     *gorm.DB
 )
 
-// InitializeHandler initializes the handler.
 func InitializeHandler() {
-	logger = configs.GetLogger("handler")
+	logger = configs.GetLogger("authHandler")
 	db = configs.GetDatabase()
 }

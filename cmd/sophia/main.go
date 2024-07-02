@@ -15,12 +15,12 @@ func main() {
 
 	err := godotenv.Load()
 	if err != nil {
-		logger.Errorf("failed to load env file: %v", err)
+		logger.Errorf("failed to load env file: %v", err.Error())
 	}
 
 	err = configs.InitializeDatabase()
 	if err != nil {
-		logger.Errorf("database initialization failed: %v", err)
+		logger.Errorf("database initialization failed: %v", err.Error())
 		return
 	}
 

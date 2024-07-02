@@ -24,13 +24,13 @@ func InitializePostgres() (*gorm.DB, error) {
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		logger.Errorf("failed to connect to the database: %v", err)
+		logger.Errorf("failed to connect to the database: %v", err.Error())
 		return nil, err
 	}
 
 	err = db.AutoMigrate(&schemas.User{})
 	if err != nil {
-		logger.Errorf("failed to migrate schemas: %v", err)
+		logger.Errorf("failed to migrate schemas: %v", err.Error())
 		return nil, err
 	}
 
